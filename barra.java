@@ -1,8 +1,6 @@
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +8,7 @@ public class barra extends JPanel{
     private char edificio_selezionato;
     private JLabel soldi = new JLabel();
     private JLabel popolazione = new JLabel();
+    private JLabel giorni = new JLabel();
 
     public barra(){
         edificio[] edifici = {new casa(),new negozio()};
@@ -20,6 +19,7 @@ public class barra extends JPanel{
                 edificio_selezionato = 'R';
             }
         });
+        this.add(giorni);
         this.add(soldi);
         this.add(popolazione);
         this.add(bottoneRemove);
@@ -55,6 +55,10 @@ public class barra extends JPanel{
 
     public void setTextDenaro(String text){
         soldi.setText(text);
+    }
+
+    public void setTextGiorni(String text){
+        giorni.setText(text);
     }
 
     public void setTextPopolazione(String text){

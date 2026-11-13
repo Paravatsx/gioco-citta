@@ -39,7 +39,18 @@ public class PannelloCitta extends JPanel{
         });
     }
 
-    
+    public int getGiorni(){
+        return citta.getGiorni();
+    }
+
+    public void setGiorni(int giorni){
+        citta.setGiorni(giorni);
+    }
+
+    public void epaint(){
+        repaint();
+    }
+
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         for (int i = 0; i < N; i++) {

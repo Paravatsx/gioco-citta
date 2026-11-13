@@ -2,6 +2,7 @@ public class citta{
     private edificio[][] griglia = new edificio[40][40];
     private int soldi = 20;
     private int popolazione;
+    private int giorni = 0;
 
     public void addEdificio(int x,int y,edificio e){
         griglia[x][y] = e;
@@ -27,5 +28,13 @@ public class citta{
 
     public int getPopolazione() {
         return popolazione;
+    }
+
+    public int getGiorni() {
+        return giorni;
+    }
+
+    public void setGiorni(int giorni) {
+        this.giorni = giorni;
     }
 }
