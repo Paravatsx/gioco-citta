@@ -7,7 +7,7 @@ public class PannelloCitta extends JPanel{
 
     public PannelloCitta(barra barra){
         setPreferredSize(new Dimension(N*CELLE,N*CELLE));
-        barra.setTextDenaro("Denaro: "+citta.getSoldi());
+        barra.setTextDenaro("Denaro: "+citta.getSoldi()+ "$");
         barra.setTextPopolazione("Popolazione: "+citta.getPopolazione());
 
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -25,8 +25,10 @@ public class PannelloCitta extends JPanel{
                     citta.addEdificio(x, y,negozio);
                     citta.setSoldi(citta.getSoldi()-negozio.getCosto());
                     barra.setEdificio_selezionato('A');
+                }else if(edificio_selezionato == 'R' && citta.getCella(x, y) != null){
+                    citta.setSoldi(citta.getSoldi()+citta.removeEdificio(x, y));
+                    barra.setEdificio_selezionato('A');
                 }
-                
                 System.out.println(x+" "+y);
                 if(citta.getSoldi()>0)
                     barra.setTextDenaro("Denaro: "+citta.getSoldi()+"$");

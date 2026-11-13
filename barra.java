@@ -14,6 +14,12 @@ public class barra extends JPanel{
     public barra(){
         edificio[] edifici = {new casa(),new negozio()};
         JButton bottoneRemove = new JButton("Rimuovi");
+        bottoneRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                edificio_selezionato = 'R';
+            }
+        });
         this.add(soldi);
         this.add(popolazione);
         this.add(bottoneRemove);

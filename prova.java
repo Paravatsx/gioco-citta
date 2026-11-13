@@ -7,7 +7,7 @@ public class prova{
         JFrame frame = new JFrame("Simulazione città");
         barra barra = new barra();
 
-        frame.setSize(800, 800);
+        frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);

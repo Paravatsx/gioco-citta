@@ -11,6 +11,12 @@ public class citta{
         return griglia[x][y];
     }
 
+    public int removeEdificio(int x,int y){
+        int soldi = griglia[x][y].getCosto();
+        griglia[x][y] = null;
+        return soldi;
+    }
+
     public int getSoldi() {
         return soldi;
     }
