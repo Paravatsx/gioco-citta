@@ -7,6 +7,7 @@ public class casa extends edificio {
     public casa(){
         costo = 5;
         nome = "casa: 5$";
+        checked= false;
         colore = new Color(150,75,0);
     }
 

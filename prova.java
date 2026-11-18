@@ -20,10 +20,15 @@ public class prova{
 
         while (true) {
             pannelloCitta.setGiorni(pannelloCitta.getGiorni()+1);
-            barra.setTextGiorni("Giorni: "+String.valueOf(pannelloCitta.getGiorni()));;
+            pannelloCitta.avanzaGiorno();
+            barra.setTextGiorni("Giorni: "+pannelloCitta.getGiorni());;
+            barra.setTextPopolazione("Popolazione: "+ pannelloCitta.getPopolazione());
+            barra.setTextDenaro("Denaro: "+pannelloCitta.getSoldi()+ "$");
+            System.out.println("Popolazione: "+ pannelloCitta.getPopolazione());
+            System.out.println("P.P: "+ pannelloCitta.getPossibilePopolazione());
+            System.out.println("Posti di Lavoro:" +pannelloCitta.getPostiLavoro());
             try {
                 TimeUnit.SECONDS.sleep(3);
-                pannelloCitta.epaint();
             } catch (Exception e) {
                 System.out.print("Errore");
             }

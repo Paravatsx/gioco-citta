@@ -29,7 +29,6 @@ public class PannelloCitta extends JPanel{
                     citta.setSoldi(citta.getSoldi()+citta.removeEdificio(x, y));
                     barra.setEdificio_selezionato('A');
                 }
-                System.out.println(x+" "+y);
                 if(citta.getSoldi()>0)
                     barra.setTextDenaro("Denaro: "+citta.getSoldi()+"$");
                 else
@@ -37,6 +36,43 @@ public class PannelloCitta extends JPanel{
                 repaint();
             }
         });
+    }
+
+    public void avanzaGiorno(){
+        //Scorro la griglia per vedere quanti edifici e quali ho 
+        edificio[][] griglia = citta.getGriglia();
+        for (int x = 0; x < griglia.length; x++) {
+            for (int y = 0; y < griglia[0].length; y++) {
+                //le case aumentano la popolazione che posso ospitare(ma non effettiva)
+                if(griglia[x][y] instanceof casa && griglia[x][y].getChecked() == false){
+                    citta.setPossibilePopolazione(citta.getPossibilePopolazione()+new casa().getMax_persone());
+                    griglia[x][y].setChecked(true);
+                }
+                //i negozi creano posti di lavori
+                else if(griglia[x][y] instanceof negozio && griglia[x][y].getChecked() == false){
+                    citta.setPostiLavoro(citta.getPostiLavoro()+new negozio().getPostilavoro());
+                    griglia[x][y].setChecked(true);
+                }
+
+            }
+        }
+
+        //LOGICA DIETRO SE PIAZZI UNA CASA MA NON C'é LAVORO LA POPOLAZIONE NON AUMENTA
+        if(citta.getPossibilePopolazione()<=citta.getPostiLavoro())
+            citta.setPopolazione(citta.getPossibilePopolazione());
+        if(citta.getPopolazione()>citta.getPossibilePopolazione())
+            citta.setPopolazione(citta.getPossibilePopolazione());
+
+        citta.addGuadagno();
+        System.out.println("Soldi: "+citta.getSoldi());
+        
+    }
+
+    public int getCasa(){
+        return citta.getCasa();
+    }
+    public int getNegozio(){
+        return citta.getNegozio();
     }
 
     public int getGiorni(){
@@ -47,9 +83,22 @@ public class PannelloCitta extends JPanel{
         citta.setGiorni(giorni);
     }
 
-    public void epaint(){
-        repaint();
+    public int getPopolazione(){
+        return citta.getPopolazione();
     }
+
+    public int getPossibilePopolazione(){
+        return citta.getPossibilePopolazione();
+    }
+
+     public int getPostiLavoro(){
+        return citta.getPostiLavoro();
+    }
+
+    public int getSoldi(){
+        return citta.getSoldi();
+    }
+
 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
